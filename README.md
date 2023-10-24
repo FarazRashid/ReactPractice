@@ -1,6 +1,6 @@
 # React Learning Journey Repository 🚀
 
-Welcome to my React Learning Journey Repository! In this repository, I document my journey of learning React and related technologies. I share my coding experiments, projects, and lessons learned as I explore the vast world of React development. Whether you're a beginner, an experienced developer, or just curious about React, you'll find useful resources, code snippets, and tutorials here.
+Welcome to my React Learning Journey Repository! In this repository, I document my journey of learning React and related technologies. I share my coding experiments, projects, and lessons learned as I explore the vast world of React development.
 
 Feel free to explore the projects, dive into the code, and learn along with me. If you have any questions, suggestions, or improvements, don't hesitate to open an issue or submit a pull request. Let's learn and grow together!
 
