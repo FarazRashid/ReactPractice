@@ -1,5 +1,3 @@
-import Message from "./Message";
-import "./components/ListGroup";
 import ListGroup from "./components/ListGroup";
 
 function App() {
