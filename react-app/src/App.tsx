@@ -1,13 +1,18 @@
 import { Button } from "./components/Button";
+import { Alert } from "./components/Alert";
+import { useState } from "react";
 
 function App() {
-  function onClick() {
-    console.log("button clicked");
+  const [clicked, setClicked] = useState(false);
+
+  function handleClick() {
+    setClicked((prevValue) => !prevValue);
   }
 
   return (
     <div>
-      <Button type="primary" onClick={onClick}>
+      {clicked && <Alert clicked={handleClick} />}
+      <Button type="primary" onClick={handleClick}>
         {" "}
         Click Here
       </Button>

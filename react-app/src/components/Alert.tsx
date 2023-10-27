@@ -1,9 +1,24 @@
-import { ReactNode } from "react";
-
 interface Props {
-  children: ReactNode;
+  clicked: () => void;
 }
 
-export const Alert = ({ children }: Props) => {
-  return <div className="alert alert-primary">{children}</div>;
+export const Alert = ({ clicked }: Props) => {
+  return (
+    <div
+      className="alert alert-warning alert-dismissible fade show"
+      role="alert"
+    >
+      <strong>Holy guacamole!</strong> You should check in on some of those
+      fields below.
+      <button
+        onClick={clicked}
+        type="button"
+        className="close"
+        data-dismiss="alert"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  );
 };
