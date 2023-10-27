@@ -1,21 +1,15 @@
-import { Button } from "./components/Button";
-import { Alert } from "./components/Alert";
-import { useState } from "react";
+import ListGroup from "./components/ListGroup";
 
 function App() {
-  const [clicked, setClicked] = useState(false);
+  const list = ["Islamabad", "Lahore", "Karachi", "Peshawar"];
 
-  function handleClick() {
-    setClicked((prevValue) => !prevValue);
-  }
+  const onClick = (item: string) => {
+    console.log(item);
+  };
 
   return (
     <div>
-      {clicked && <Alert clicked={handleClick} />}
-      <Button type="primary" onClick={handleClick}>
-        {" "}
-        Click Here
-      </Button>
+      <ListGroup items={list} heading="List" onSelectItem={onClick} />
     </div>
   );
 }
