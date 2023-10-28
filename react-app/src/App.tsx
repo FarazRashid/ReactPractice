@@ -1,17 +1,18 @@
-import ListGroup from "./components/ListGroup";
+import Like from "./components/Like";
+import { ReactNode } from "react";
 
 function App() {
-  const list = ["Islamabad", "Lahore", "Karachi", "Peshawar"];
-
-  const onClick = (item: string) => {
-    console.log(item);
+  const handleClick = () => {
+    console.log("clicked");
   };
 
-  return (
+  const div: ReactNode = (
     <div>
-      <ListGroup items={list} heading="List" onSelectItem={onClick} />
+      <Like onClick={handleClick} />
     </div>
   );
+
+  return div;
 }
 
 export default App;
