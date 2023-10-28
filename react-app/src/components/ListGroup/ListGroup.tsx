@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { AiFillMobile } from "react-icons/ai";
 
 const List = styled.ul`
   list-style: none;
@@ -39,6 +40,7 @@ function ListGroup({ items, heading, onSelectItem }: Props) {
               onSelectItem(item);
             }}
           >
+            <AiFillMobile></AiFillMobile>
             {item}
           </ListItem>
         ))}
