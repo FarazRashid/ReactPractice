@@ -1,38 +1,29 @@
 import { useState } from "react";
+import { produce } from "immer";
 
 function App() {
-  const [cart, setCart] = useState({
-    discount: 0.1,
-    items: [
-      {
-        id: 1,
-        title: "Product 1",
-        quantity: 1,
-      },
-      {
-        id: 2,
-        title: "Product 2",
-        quantity: 3,
-      },
-    ],
-  });
+  const [bugs, setBugs] = useState([
+    { id: 1, title: "bug 1", fixed: false },
+    { id: 2, title: "bug 2", fixed: false },
+  ]);
 
   const handleClick = () => {
-    setCart({
-      ...cart,
-      items: cart.items.map((item) => {
-        if (item.id === 1) {
-          return { ...item, quantity: 2 };
-        }
-        return item;
-      }),
-    });
+    setBugs(
+      produce((draft) => {
+        const bug = draft.find((bug) => bug.id === 1);
+        if (bug) bug.fixed = true;
+      })
+    );
   };
 
   return (
     <div>
-      <input></input>
-      <button>Submit</button>
+      {bugs.map((bug) => (
+        <p key={bug.id}>
+          {bug.title} {bug.fixed ? "fixed" : "New"}
+        </p>
+      ))}
+      <button onClick={handleClick}>Submit</button>
     </div>
   );
 }
