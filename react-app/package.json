@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.3.2",
     "@types/styled-components": "^5.1.29",
     "bootstrap": "^5.3.2",
     "components": "^0.1.0",
@@ -19,7 +20,8 @@
     "react-hook-form": "^7.47.0",
     "react-icons": "^4.11.0",
     "styled": "^1.0.0",
-    "styled-components": "^6.1.0"
+    "styled-components": "^6.1.0",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
