@@ -52,7 +52,7 @@ function ExpenseForm() {
           </label>
           <input {...register("category")} className="form-control" />
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary mb-3 ">
           Submit
         </button>
       </form>
