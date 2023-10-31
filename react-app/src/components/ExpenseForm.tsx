@@ -3,9 +3,11 @@ import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 const schema = z.object({
-  description: z.string(),
-  amount: z.number(),
-  category: z.string(),
+  description: z
+    .string()
+    .min(3, { message: "Description should be minimum 3 characters" }),
+  amount: z.number({ invalid_type_error: "Amount is required" }),
+  category: z.string({ required_error: "Category is required" }),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -36,6 +38,9 @@ function ExpenseForm() {
             className="form-control"
           />
         </div>
+        {errors.description && (
+          <p className="text-danger"> {errors.description.message}</p>
+        )}
         <div className="mb-3">
           <label htmlFor="" className="form-label">
             Amount
@@ -45,6 +50,9 @@ function ExpenseForm() {
             type="number"
             className="form-control"
           />
+          {errors.amount && (
+            <p className="text-danger">{errors.amount.message}</p>
+          )}
         </div>
         <div className="mb-3">
           <label htmlFor="" className="form-label">
@@ -52,6 +60,9 @@ function ExpenseForm() {
           </label>
           <input {...register("category")} className="form-control" />
         </div>
+        {errors.category && (
+          <p className="text-danger">{errors.category.message}</p>
+        )}
         <button type="submit" className="btn btn-primary mb-3 ">
           Submit
         </button>
