@@ -7,7 +7,7 @@ const schema = z.object({
     .string()
     .min(3, { message: "Description should be minimum 3 characters" }),
   amount: z.number({ invalid_type_error: "Amount is required" }),
-  category: z.string({ required_error: "Category is required" }),
+  category: z.string().min(1, { message: "Category is required" }),
 });
 
 type FormData = z.infer<typeof schema>;
