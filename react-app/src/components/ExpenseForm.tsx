@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { FieldValues, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 const schema = z.object({
@@ -12,7 +12,11 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-function ExpenseForm() {
+interface Props {
+  onSubmit: (data: FormData) => void;
+}
+
+function ExpenseForm({ onSubmit }: Props) {
   const {
     register,
     handleSubmit,
@@ -20,10 +24,6 @@ function ExpenseForm() {
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   console.log(errors);
-
-  const onSubmit = (data: FieldValues) => {
-    console.log(data);
-  };
 
   return (
     <>
