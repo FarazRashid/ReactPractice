@@ -1,4 +1,14 @@
-function ExpenseList() {
+interface Expense {
+  description: string;
+  amount: number;
+  category: string;
+}
+
+interface Props {
+  expense: Expense[];
+}
+
+function ExpenseList({ expense }: Props) {
   return (
     <>
       <table className="table table-bordered">
@@ -11,14 +21,16 @@ function ExpenseList() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>
-              <button className="btn btn-outline-danger">Delete</button>
-            </td>
-          </tr>
+          {expense.map((expense) => (
+            <tr key={expense.description}>
+              <td>{expense.description}</td>
+              <td>{expense.amount}</td>
+              <td>{expense.category}</td>
+              <td>
+                <button className="btn btn-outline-danger">Delete</button>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </>
