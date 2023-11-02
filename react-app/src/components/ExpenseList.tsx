@@ -1,4 +1,5 @@
 interface Expense {
+  id: number;
   description: string;
   amount: number;
   category: string;
@@ -23,7 +24,7 @@ function ExpenseList({ expense, deleteExpense }: Props) {
         </thead>
         <tbody>
           {expense.map((expense) => (
-            <tr key={expense.description}>
+            <tr key={expense.id}>
               <td>{expense.description}</td>
               <td>{expense.amount}</td>
               <td>{expense.category}</td>
