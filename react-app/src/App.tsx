@@ -27,11 +27,19 @@ function App() {
     console.log(expense);
   };
 
+  const deleteExpense = (data: FieldValues) => {
+    console.log("Data to be deleted:", data);
+
+    setExpense((prevValue) =>
+      prevValue.filter((value) => value.description !== data.description)
+    );
+  };
+
   return (
     <div>
       <ExpenseForm onSubmit={addExpense} />
       <ExpenseFilter />
-      <ExpenseList expense={expense} />
+      <ExpenseList expense={expense} deleteExpense={deleteExpense} />
     </div>
   );
 }
