@@ -5,6 +5,8 @@ import ExpenseList from "./components/ExpenseList";
 import { FieldValues } from "react-hook-form";
 
 function App() {
+  const [selectedCategory, setSelectedCategory] = useState("");
+
   const [expense, setExpense] = useState([
     {
       id: 0,
@@ -33,11 +35,19 @@ function App() {
     setExpense((prevValue) => prevValue.filter((value) => value.id !== id));
   };
 
+  const selectCategory = (category: string) => {
+    setSelectedCategory(category);
+  };
+
+  const visibleExpense = selectedCategory
+    ? expense.filter((expense) => expense.category === selectedCategory)
+    : expense;
+
   return (
     <div>
       <ExpenseForm onSubmit={addExpense} />
-      <ExpenseFilter />
-      <ExpenseList expense={expense} deleteExpense={deleteExpense} />
+      <ExpenseFilter onSelect={selectCategory} />
+      <ExpenseList expense={visibleExpense} deleteExpense={deleteExpense} />
     </div>
   );
 }
