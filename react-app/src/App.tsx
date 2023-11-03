@@ -4,7 +4,6 @@ import ExpenseForm from "./components/ExpenseForm";
 import ExpenseList from "./components/ExpenseList";
 import { FieldValues } from "react-hook-form";
 
-
 function App() {
   const [expense, setExpense] = useState([
     {
