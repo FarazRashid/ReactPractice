@@ -7,10 +7,12 @@ interface Expense {
 
 interface Props {
   expense: Expense[];
-  deleteExpense: (data: Expense) => void;
+  deleteExpense: (data: number) => void;
 }
 
 function ExpenseList({ expense, deleteExpense }: Props) {
+  if (expense.length === 0) return null;
+
   return (
     <>
       <table className="table table-bordered">
@@ -31,20 +33,25 @@ function ExpenseList({ expense, deleteExpense }: Props) {
               <td>
                 <button
                   className="btn btn-outline-danger"
-                  onClick={() => deleteExpense(expense)}
+                  onClick={() => deleteExpense(expense.id)}
                 >
                   Delete
                 </button>
               </td>
             </tr>
           ))}
+        </tbody>
+        <tfoot>
           <tr>
             <td>Total Amount:</td>
             <td>
-              {expense.reduce((total, expense) => total + expense.amount, 0)}
+              $
+              {expense
+                .reduce((total, expense) => total + expense.amount, 0)
+                .toFixed(2)}
             </td>
           </tr>
-        </tbody>
+        </tfoot>
       </table>
     </>
   );

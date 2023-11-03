@@ -4,7 +4,6 @@ import ExpenseForm from "./components/ExpenseForm";
 import ExpenseList from "./components/ExpenseList";
 import { FieldValues } from "react-hook-form";
 
-const categories = ["Grocery", "Utility", "Entertainment"];
 
 function App() {
   const [expense, setExpense] = useState([
@@ -29,12 +28,10 @@ function App() {
     console.log(expense);
   };
 
-  const deleteExpense = (data: FieldValues) => {
-    console.log("Data to be deleted:", data);
+  const deleteExpense = (id: number) => {
+    console.log("Data to be deleted:", id);
 
-    setExpense((prevValue) =>
-      prevValue.filter((value) => value.id !== data.id)
-    );
+    setExpense((prevValue) => prevValue.filter((value) => value.id !== id));
   };
 
   return (
@@ -47,4 +44,3 @@ function App() {
 }
 
 export default App;
-export { categories };

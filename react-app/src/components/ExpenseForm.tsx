@@ -33,6 +33,7 @@ function ExpenseForm({ onSubmit }: Props) {
             Description
           </label>
           <input
+            id="description"
             {...register("description")}
             type="text"
             className="form-control"
@@ -46,6 +47,7 @@ function ExpenseForm({ onSubmit }: Props) {
             Amount
           </label>
           <input
+            id="amount"
             {...register("amount", { valueAsNumber: true })}
             type="number"
             className="form-control"
@@ -58,7 +60,11 @@ function ExpenseForm({ onSubmit }: Props) {
           <label htmlFor="" className="form-label">
             Category
           </label>
-          <input {...register("category")} className="form-control" />
+          <input
+            id="category"
+            {...register("category")}
+            className="form-control"
+          />
         </div>
         {errors.category && (
           <p className="text-danger">{errors.category.message}</p>

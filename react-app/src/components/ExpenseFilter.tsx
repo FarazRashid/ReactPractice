@@ -1,9 +1,9 @@
-import { categories } from "../App";
-
 function ExpenseFilter() {
+  const categories = ["Grocery", "Utility", "Entertainment"];
+
   return (
     <select className="form-select mb-3" aria-label="Default select example">
-      <option selected>Open this select menu</option>
+      <option selected>All Categories</option>
       {categories.map((category) => {
         return <option key={category}>{category}</option>;
       })}
