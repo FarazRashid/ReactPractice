@@ -31,7 +31,7 @@ function ExpenseForm({ onSubmit }: Props) {
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-3">
-          <label htmlFor="" className="form-label">
+          <label htmlFor="description" className="form-label">
             Description
           </label>
           <input
@@ -45,7 +45,7 @@ function ExpenseForm({ onSubmit }: Props) {
           <p className="text-danger"> {errors.description.message}</p>
         )}
         <div className="mb-3">
-          <label htmlFor="" className="form-label">
+          <label htmlFor="amount" className="form-label">
             Amount
           </label>
           <input
@@ -59,10 +59,11 @@ function ExpenseForm({ onSubmit }: Props) {
           )}
         </div>
         <div className="mb-3">
-          <label htmlFor="" className="form-label">
+          <label htmlFor="category" className="form-label">
             Category
           </label>
           <select id="category" className="form-control">
+            <option value=""></option>
             {categories.map((category) => {
               return (
                 <option key={category} value={category}>
