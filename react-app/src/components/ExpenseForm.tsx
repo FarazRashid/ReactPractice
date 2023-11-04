@@ -23,6 +23,7 @@ function ExpenseForm({ onSubmit }: Props) {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
@@ -30,7 +31,12 @@ function ExpenseForm({ onSubmit }: Props) {
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form
+        onSubmit={handleSubmit((data) => {
+          onSubmit(data);
+          reset();
+        })}
+      >
         <div className="mb-3">
           <label htmlFor="description" className="form-label">
             Description
@@ -63,7 +69,11 @@ function ExpenseForm({ onSubmit }: Props) {
           <label htmlFor="category" className="form-label">
             Category
           </label>
-          <select id="category" className="form-control">
+          <select
+            {...register("category")}
+            id="category"
+            className="form-control"
+          >
             <option value=""></option>
             {categories.map((category) => {
               return (
