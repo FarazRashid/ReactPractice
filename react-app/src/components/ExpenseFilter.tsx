@@ -13,7 +13,9 @@ function ExpenseFilter({ onSelect }: Props) {
         onSelect(event.target.value);
       }}
     >
-      <option selected>All Categories</option>
+      <option selected value="all">
+        All Categories
+      </option>
       {categories.map((category) => {
         return (
           <option key={category} value={category}>

@@ -25,6 +25,8 @@ function ExpenseForm({ onSubmit }: Props) {
 
   console.log(errors);
 
+  const categories = ["Grocery", "Utility", "Entertainment"];
+
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -60,11 +62,15 @@ function ExpenseForm({ onSubmit }: Props) {
           <label htmlFor="" className="form-label">
             Category
           </label>
-          <input
-            id="category"
-            {...register("category")}
-            className="form-control"
-          />
+          <select id="category" className="form-control">
+            {categories.map((category) => {
+              return (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              );
+            })}
+          </select>
         </div>
         {errors.category && (
           <p className="text-danger">{errors.category.message}</p>
