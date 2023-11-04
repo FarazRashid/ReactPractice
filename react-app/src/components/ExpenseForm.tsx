@@ -1,13 +1,16 @@
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import categories from "./Categories";
 
 const schema = z.object({
   description: z
     .string()
     .min(3, { message: "Description should be minimum 3 characters" }),
   amount: z.number({ invalid_type_error: "Amount is required" }),
-  category: z.string().min(1, { message: "Category is required" }),
+  category: z.enum(categories, {
+    errorMap: () => ({ message: "Category is required" }),
+  }),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -24,8 +27,6 @@ function ExpenseForm({ onSubmit }: Props) {
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   console.log(errors);
-
-  const categories = ["Grocery", "Utility", "Entertainment"];
 
   return (
     <>

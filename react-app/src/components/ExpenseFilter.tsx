@@ -1,10 +1,10 @@
+import categories from "./Categories";
+
 interface Props {
   onSelect: (category: string) => void;
 }
 
 function ExpenseFilter({ onSelect }: Props) {
-  const categories = ["Grocery", "Utility", "Entertainment"];
-
   return (
     <select
       className="form-select mb-3"
