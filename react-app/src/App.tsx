@@ -3,9 +3,20 @@ import ExpenseFilter from "./components/ExpenseFilter";
 import ExpenseForm from "./components/ExpenseForm";
 import ExpenseList from "./components/ExpenseList";
 import { FieldValues } from "react-hook-form";
+import { useEffect, useRef } from "react";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("");
+
+  const ref = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (ref.current) ref.current.focus();
+  });
+
+  useEffect(() => {
+    document.title = "My App";
+  });
 
   const [expense, setExpense] = useState([
     {
@@ -45,9 +56,10 @@ function App() {
 
   return (
     <div>
-      <ExpenseForm onSubmit={addExpense} />
-      <ExpenseFilter onSelect={selectCategory} />
-      <ExpenseList expense={visibleExpense} deleteExpense={deleteExpense} />
+      {/* <ExpenseForm onSubmit={addExpense} /> */}
+      {/* <ExpenseFilter onSelect={selectCategory} /> */}
+      {/* <ExpenseList expense={visibleExpense} deleteExpense={deleteExpense} /> */}
+      <input ref={ref} type="text" className="form-control" />
     </div>
   );
 }
