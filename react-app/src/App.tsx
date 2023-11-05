@@ -1,7 +1,7 @@
 import { useState } from "react";
-import ExpenseFilter from "./components/ExpenseFilter";
-import ExpenseForm from "./components/ExpenseForm";
-import ExpenseList from "./components/ExpenseList";
+import ExpenseFilter from "./components/Expenses/ExpenseFilter";
+import ExpenseForm from "./components/Expenses/ExpenseForm";
+import ExpenseList from "./components/Expenses/ExpenseList";
 import { FieldValues } from "react-hook-form";
 import { useEffect, useRef } from "react";
 
@@ -56,9 +56,9 @@ function App() {
 
   return (
     <div>
-      {/* <ExpenseForm onSubmit={addExpense} /> */}
-      {/* <ExpenseFilter onSelect={selectCategory} /> */}
-      {/* <ExpenseList expense={visibleExpense} deleteExpense={deleteExpense} /> */}
+      <ExpenseForm onSubmit={addExpense} />
+      <ExpenseFilter onSelect={selectCategory} />
+      <ExpenseList expense={visibleExpense} deleteExpense={deleteExpense} />
       <input ref={ref} type="text" className="form-control" />
     </div>
   );
