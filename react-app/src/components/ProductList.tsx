@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
-function ProductList() {
+function ProductList({ category }: { category: string }) {
   const [products, setProducts] = useState<string[]>([]);
 
   useEffect(() => {
-    console.log("Setting Products");
+    console.log("Fetching products in", category);
     setProducts(["Dishwasher", "Handwash"]);
-  });
+  }, [category]);
 
   return <div>ProductList</div>;
 }
