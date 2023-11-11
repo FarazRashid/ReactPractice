@@ -21,7 +21,7 @@ function PlatformSelector({ onSelectPlatform, selectedPlatform }: Props) {
   if (error) return null;
 
   return (
-    <Box marginX={10}>
+    <Box>
       <Menu>
         <MenuButton as={Button} rightIcon={<BsChevronDown />}>
           {selectedPlatform?.name || "Platforms"}
